@@ -40,17 +40,17 @@ var globalStatusRE = regexp.MustCompile(`^(com|handler|connection_errors|innodb_
 var (
 	globalCommandsDesc = prometheus.NewDesc(
 		prometheus.BuildFQName(namespace, globalStatus, "commands_total"),
-		"Total number of executed MySQL commands.",
+		"Total number of executed MariaDB commands.",
 		[]string{"command"}, nil,
 	)
 	globalHandlerDesc = prometheus.NewDesc(
 		prometheus.BuildFQName(namespace, globalStatus, "handlers_total"),
-		"Total number of executed MySQL handlers.",
+		"Total number of executed MariaDB handlers.",
 		[]string{"handler"}, nil,
 	)
 	globalConnectionErrorsDesc = prometheus.NewDesc(
 		prometheus.BuildFQName(namespace, globalStatus, "connection_errors_total"),
-		"Total number of MySQL connection errors.",
+		"Total number of MariaDB connection errors.",
 		[]string{"error"}, nil,
 	)
 	globalBufferPoolPagesDesc = prometheus.NewDesc(
@@ -70,12 +70,12 @@ var (
 	)
 	globalInnoDBRowOpsDesc = prometheus.NewDesc(
 		prometheus.BuildFQName(namespace, globalStatus, "innodb_row_ops_total"),
-		"Total number of MySQL InnoDB row operations.",
+		"Total number of MariaDB InnoDB row operations.",
 		[]string{"operation"}, nil,
 	)
 	globalPerformanceSchemaLostDesc = prometheus.NewDesc(
 		prometheus.BuildFQName(namespace, globalStatus, "performance_schema_lost_total"),
-		"Total number of MySQL instrumentations that could not be loaded or created due to memory constraints.",
+		"Total number of MariaDB instrumentations that could not be loaded or created due to memory constraints.",
 		[]string{"instrumentation"}, nil,
 	)
 )
@@ -93,7 +93,7 @@ func (ScrapeGlobalStatus) Help() string {
 	return "Collect from SHOW GLOBAL STATUS"
 }
 
-// Version of MySQL from which scraper is available.
+// Version of MariaDB from which scraper is available.
 func (ScrapeGlobalStatus) Version() float64 {
 	return 5.1
 }

@@ -74,7 +74,7 @@ var (
 // Verify if Exporter implements prometheus.Collector
 var _ prometheus.Collector = (*Exporter)(nil)
 
-// Exporter collects MySQL metrics. It implements prometheus.Collector.
+// Exporter collects MariaDB metrics. It implements prometheus.Collector.
 type Exporter struct {
 	ctx      context.Context
 	logger   log.Logger
@@ -83,7 +83,7 @@ type Exporter struct {
 	metrics  Metrics
 }
 
-// New returns a new MySQL exporter for the provided DSN.
+// New returns a new MariaDB exporter for the provided DSN.
 func New(ctx context.Context, dsn string, metrics Metrics, scrapers []Scraper, logger log.Logger) *Exporter {
 	// Setup extra params for the DSN, default to having a lock timeout.
 	dsnParams := []string{fmt.Sprintf(timeoutParam, *exporterLockTimeout)}

@@ -48,7 +48,7 @@ func (ScrapeEngineInnodbStatus) Help() string {
 
 // Version of MySQL from which scraper is available.
 func (ScrapeEngineInnodbStatus) Version() float64 {
-	return 5.1
+	return 10.5
 }
 
 // Scrape collects data from database connection and sends it over channel as prometheus metric.
